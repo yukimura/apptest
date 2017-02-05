@@ -1,0 +1,27 @@
+ext {
+    kotlinVersion           = rootProject.ext.kotlin_version
+    supportLibraryVersion   = '25.1.1'
+    constraintLayout        = '1.0.0-beta4'
+    retrofitVersion         = '2.0.2'
+    rxAndroid               = '1.0.1'
+    okHttp                  = '3.2.0'
+    butterknife             = '8.5.1'
+    ormlite                 = '5.0'
+
+    dependencies = [
+            appCompat: "com.android.support:appcompat-v7:$supportLibraryVersion",
+            constraintLayout: "com.android.support.constraint:constraint-layout:$constraintLayout",
+            recyclerview: "com.android.support:recyclerview-v7:$supportLibraryVersion",
+            kotlin: "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+            retrofit: "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitConverterGson: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            retrofitAdapterRxJava: "com.squareup.retrofit2:adapter-rxjava:$retrofitVersion",
+            rxAndroid: "io.reactivex:rxandroid:$rxAndroid",
+            okHttp: "com.squareup.okhttp3:okhttp:$okHttp",
+            butterknife: "com.jakewharton:butterknife:$butterknife",
+            butterknifeCompiler: "com.jakewharton:butterknife-compiler:$butterknife",
+            ormliteCore: "com.j256.ormlite:ormlite-core:$ormlite",
+            ormliteAndroid: "com.j256.ormlite:ormlite-android:$ormlite",
+            jUnit: 'junit:junit:4.12',
+    ]
+}

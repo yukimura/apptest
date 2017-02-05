@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+    defaultConfig {
+        applicationId "com.apptest"
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    Map<String, String> dependencies = rootProject.ext.dependencies;
+
+    compile dependencies.appCompat
+    compile dependencies.constraintLayout
+    compile dependencies.recyclerview
+
+    compile dependencies.kotlin
+
+    compile dependencies.retrofit
+    compile dependencies.retrofitConverterGson
+    compile dependencies.retrofitAdapterRxJava
+    compile dependencies.rxAndroid
+    compile dependencies.okHttp
+
+    compile dependencies.butterknife
+    annotationProcessor dependencies.butterknifeCompiler
+
+    compile dependencies.ormliteCore
+    compile dependencies.ormliteAndroid
+
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+}
+
+repositories {
+    mavenCentral()
+}
