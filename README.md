@@ -29,8 +29,8 @@ Estimez votre pourcentage d'achèvement et en combien de temps vous devrez termi
         Rendre l'oservable de retrofit générique
         Gestion des exceptions vis à vis de retrofit
         Ajout des visuels avec les datas récupérées (Users / Albums / Picture)
-        Ajout de fragment dans les archi MVP
-        Ajout de test fonctionnel et unitaire
+        Ajout de fragment dans les archis MVP
+        Ajout de tests fonctionnels et unitaires
 
     Il reste encore pas mal de travail vis à vis de l'architecture.
 
