@@ -28,5 +28,8 @@ Estimez votre pourcentage d'achèvement et en combien de temps vous devrez termi
         Modele de données pour la BDD
         Rendre l'oservable de retrofit générique
         Gestion des exceptions vis à vis de retrofit
+        Ajout des visuels avec les datas récupérées (Users / Albums / Picture)
 
     Il reste encore pas mal de travail vis à vis de l'architecture.
+
+    Aucun visuel n'est réalisé avec les datas récuperées, j'ai préféré me concentrer sur l'architecture.
