@@ -6,12 +6,10 @@ import com.apptest.BaseController;
 import com.apptest.R;
 import com.apptest.interfaces.AppService;
 import com.apptest.interfaces.RetrofitResponse;
-import com.apptest.model.User;
 import com.apptest.retrofit.FactoryService;
+import com.meetphone.monsherif.annotation.database.AUser;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import retrofit2.Response;
 import rx.Observable;
@@ -19,23 +17,32 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+/**
+ * Created by davidpayel on 07/02/2017.
+ */
+
 public class RetrofitController extends BaseController {
-    public Long mUserId;
+    private int USERID = R.string.userId;
+    private int userId = 0;
 
     public RetrofitController(Context context) {
         super(context);
     }
 
-    public void retrofit(RetrofitResponse retrofitResponse, int switchId, Long userId){
-        mUserId = userId;
+    public void retrofit(RetrofitResponse retrofitResponse, int service){
         setRetrofitResponse(retrofitResponse);
-        Observable<Response<ArrayList<Object>>> observable = switchObservable(switchId);
+        Observable<Response<Object>> observable = switchObservable(service);
 
         if(observable != null){
             observable.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .unsubscribeOn(Schedulers.io())
-                    .subscribe(new Subscriber<Response<ArrayList<Object>>>() {
+                    .subscribe(new Subscriber<Response<Object>>() {
+                        @Override
+                        public void onNext(Response response) {
+                            mRetrofitResponse.onStatusResponse(response);
+                        }
+
                         @Override
                         public void onCompleted() {
                             mRetrofitResponse.onComplete(getContext().getString(R.string.complete));
@@ -45,36 +52,26 @@ public class RetrofitController extends BaseController {
                         public void onError(Throwable e) {
                             mRetrofitResponse.onFailureResponse(e.getMessage().toString());
                         }
-
-                        @Override
-                        public void onNext(Response response) {
-                            mRetrofitResponse.onStatusResponse(response);
-                        }
                     });
         }
     }
 
-    public Observable switchObservable(int switchId){
+    public Observable switchObservable(int service){
         AppService appService = FactoryService.INSTANCE.createService(AppService.class);
-        switch (switchId){
-            /**
-             * Users
-             */
-            case 1:
-                return appService.getUsers();
+        HashMap maps = mRetrofitResponse.onBody();
+        if(maps.get(USERID) != null){
+            userId = Integer.parseInt(maps.get(USERID).toString());
+            maps.remove(USERID);
+        }
+        switch (service){
+            case AUser.USERS:
+                return appService.getUsers(); //maps
 
-            /**
-             * UsersAlbums
-             */
             case 2:
-                return appService.getUsersAlbums(mUserId);
+                return appService.getUsersAlbums(userId); //maps
 
-            /**
-             * GalleryOfPicture
-             */
             case 3:
-                return appService.getGalleryOfPicture(mUserId);
-
+                return appService.getGalleryOfPicture(userId); //maps
         }
         return null;
     }

@@ -1,38 +1,28 @@
-package com.apptest.model
+package com.apptest.models
 
 import android.os.Parcel
 import android.os.Parcelable
-import java.util.*
 
 /**
  * Created by davidpayel on 04/02/2017.
  */
-data class UserAddress(
-        val street: String? = null,
-        var suite: String? = null,
-        var city: String? = null,
-        var zipcode: String? = null,
-        var geo: ArrayList<AddressGeo>? = null) : Parcelable {
+data class AddressGeo(
+        var lat: String? = null,
+        var lng: String? = null) : Parcelable {
 
     protected constructor(parcelIn: Parcel) : this(
-        street = parcelIn.readString(),
-        suite = parcelIn.readString(),
-        city = parcelIn.readString(),
-        zipcode = parcelIn.readString(),
-        geo = ArrayList<AddressGeo>()
+        lat = parcelIn.readString(),
+        lng = parcelIn.readString()
     )
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
-        dest.writeString(street)
-        dest.writeString(suite)
-        dest.writeString(city)
-        dest.writeString(zipcode)
-        dest.writeList(geo)
+        dest.writeString(lat)
+        dest.writeString(lng)
     }
 
     companion object {
         @JvmField @Suppress("unused")
-        val CREATOR = createParcel { UserAddress(it) }
+        val CREATOR = createParcel { AddressGeo(it) }
 
         inline fun <reified T : Parcelable> createParcel(
                 crossinline createFromParcel: (Parcel) -> T?): Parcelable.Creator<T> =
@@ -45,7 +35,7 @@ data class UserAddress(
     override fun describeContents() = 0
 
     override fun toString(): String {
-        return "UserAddress(street=$street, suite=$suite, city=$city, zipcode=$zipcode, geo=$geo)"
+        return "AddressGeo(lat=$lat, lng=$lng)"
     }
 
 

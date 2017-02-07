@@ -1,9 +1,9 @@
-package com.apptest.model
+package com.apptest.models
 
 import android.os.Parcel
 import android.os.Parcelable
 import java.util.*
-import com.apptest.model.UserAddress
+import com.apptest.models.UserAddress
 import com.j256.ormlite.field.DatabaseField
 import com.j256.ormlite.table.DatabaseTable
 

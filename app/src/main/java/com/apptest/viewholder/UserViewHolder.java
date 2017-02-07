@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.apptest.R;
 import com.apptest.adapter.UsersAdapter;
-import com.apptest.model.User;
+import com.apptest.models.User;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

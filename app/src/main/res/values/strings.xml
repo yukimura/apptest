@@ -2,4 +2,5 @@
     <string name="app_name">Apptest</string>
     <string name="default_info_message">Message à afficher si aucun items</string>
     <string name="complete">Complete</string>
+    <string name="userId">userId</string>
 </resources>

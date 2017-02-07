@@ -1,4 +1,4 @@
-package com.apptest.model
+package com.apptest.models
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -6,23 +6,26 @@ import android.os.Parcelable
 /**
  * Created by davidpayel on 04/02/2017.
  */
-data class AddressGeo(
-        var lat: String? = null,
-        var lng: String? = null) : Parcelable {
+data class UserCompany(
+        val name: String? = null,
+        val catchPhrase: String? = null,
+        val bs: String? = null) : Parcelable {
 
     protected constructor(parcelIn: Parcel) : this(
-        lat = parcelIn.readString(),
-        lng = parcelIn.readString()
+        name = parcelIn.readString(),
+        catchPhrase = parcelIn.readString(),
+        bs = parcelIn.readString()
     )
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
-        dest.writeString(lat)
-        dest.writeString(lng)
+        dest.writeString(name)
+        dest.writeString(catchPhrase)
+        dest.writeString(bs)
     }
 
     companion object {
         @JvmField @Suppress("unused")
-        val CREATOR = createParcel { AddressGeo(it) }
+        val CREATOR = createParcel { UserCompany(it) }
 
         inline fun <reified T : Parcelable> createParcel(
                 crossinline createFromParcel: (Parcel) -> T?): Parcelable.Creator<T> =
@@ -33,10 +36,4 @@ data class AddressGeo(
     }
 
     override fun describeContents() = 0
-
-    override fun toString(): String {
-        return "AddressGeo(lat=$lat, lng=$lng)"
-    }
-
-
 }

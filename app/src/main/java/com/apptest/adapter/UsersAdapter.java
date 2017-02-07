@@ -7,12 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.apptest.R;
-import com.apptest.model.User;
+import com.apptest.models.User;
 import com.apptest.viewholder.UserViewHolder;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Created by davidpayel on 04/02/2017.

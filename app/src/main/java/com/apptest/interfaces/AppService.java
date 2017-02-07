@@ -1,20 +1,13 @@
 package com.apptest.interfaces;
 
-import com.apptest.model.User;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
-import okhttp3.ResponseBody;
 import retrofit2.Response;
 import retrofit2.http.Body;
-import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.PUT;
 import retrofit2.http.Path;
-import retrofit2.http.QueryMap;
 import rx.Observable;
 
 /**
@@ -23,11 +16,11 @@ import rx.Observable;
 public interface AppService {
 
     @GET("/users")
-    Observable<Response<ArrayList<Object>>> getUsers();
+    Observable<Response<ArrayList<Object>>> getUsers(); //@Body HashMap maps
 
     @POST("/users/{user_id}/albums")
-    Observable<Response<ArrayList<Object>>> getUsersAlbums(@Path("userId") long userId);
+    Observable<Response<ArrayList<Object>>> getUsersAlbums(@Path("userId") long userId); //@Body HashMap maps
 
     @POST("/albums/{album_id}/photos")
-    Observable<Response<ArrayList<Object>>> getGalleryOfPicture(@Path("userId") long userId);
+    Observable<Response<ArrayList<Object>>> getGalleryOfPicture(@Path("userId") long userId); //@Body HashMap maps
 }

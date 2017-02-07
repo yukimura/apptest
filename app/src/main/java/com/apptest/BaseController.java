@@ -3,6 +3,13 @@ package com.apptest;
 import android.content.Context;
 
 import com.apptest.interfaces.RetrofitResponse;
+import com.apptest.retrofit.FactoryService;
+
+import retrofit2.Response;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by davidpayel on 05/02/2017.
