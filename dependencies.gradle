@@ -10,8 +10,9 @@ ext {
 
     dependencies = [
             appCompat: "com.android.support:appcompat-v7:$supportLibraryVersion",
-            constraintLayout: "com.android.support.constraint:constraint-layout:$constraintLayout",
+            design: "com.android.support:design:$supportLibraryVersion",
             recyclerview: "com.android.support:recyclerview-v7:$supportLibraryVersion",
+            constraintLayout: "com.android.support.constraint:constraint-layout:$constraintLayout",
             kotlin: "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
             retrofit: "com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitConverterGson: "com.squareup.retrofit2:converter-gson:$retrofitVersion",

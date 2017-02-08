@@ -1,11 +1,14 @@
 package com.apptest.Users
 
 import android.util.Log
-import com.apptest.CoreApp
+import com.apptest.core.CoreApp
 import com.apptest.R
-import com.apptest.interfaces.RetrofitResponse
-import com.apptest.models.User
-import com.apptest.singleton.AppManager
+import com.apptest.Users.annotations.AUser.Companion.GALLERYOFPICTURE
+import com.apptest.Users.annotations.AUser.Companion.USERS
+import com.apptest.Users.annotations.AUser.Companion.USERSALBUMS
+import com.apptest.retrofit.interfaces.RetrofitResponse
+import com.apptest.Users.models.User
+import com.apptest.retrofit.singletons.ServiceManager
 import retrofit2.Response
 import java.util.*
 
@@ -32,7 +35,7 @@ class UserPresenter(usersView: UserContract.View) : UserContract.Presenter, Retr
 
     override fun load(service: Int) {
         mUsersView.showProgressIndicator()
-        AppManager.getInstance(CoreApp.APPLICATION).getRetrofitController().retrofit(this, service)
+        ServiceManager.getInstance(CoreApp.APPLICATION).userController.users(this, service)
     }
 
     override fun onComplete(message: String) {
@@ -45,16 +48,20 @@ class UserPresenter(usersView: UserContract.View) : UserContract.Presenter, Retr
     }
 
     override fun onStatusResponse(response: Response<*>) {
-        val responseUser = response as Response<ArrayList<User>>
-        this@UserPresenter.users = responseUser.body()
+        this@UserPresenter.users = response.body() as ArrayList<User>
     }
 
     override fun onFailureResponse(message: String) {
         Log.e(TAG, message)
     }
 
-    override fun onBody(): HashMap<*, *> {
-        val maps = HashMap<String, String>()
+    override fun onBody(service: Int): HashMap<*, *> {
+        var maps = HashMap<String, String>()
+        when (service) {
+            USERS -> return maps
+            USERSALBUMS -> return maps
+            GALLERYOFPICTURE -> return maps
+        }
         return maps
     }
 }

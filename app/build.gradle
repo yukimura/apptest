@@ -24,10 +24,15 @@ android {
     }
 }
 
+kapt {
+    generateStubs = true
+}
+
 dependencies {
     Map<String, String> dependencies = rootProject.ext.dependencies;
 
     compile dependencies.appCompat
+    compile dependencies.design
     compile dependencies.constraintLayout
     compile dependencies.recyclerview
 
@@ -40,7 +45,7 @@ dependencies {
     compile dependencies.okHttp
 
     compile dependencies.butterknife
-    annotationProcessor dependencies.butterknifeCompiler
+    kapt dependencies.butterknifeCompiler
 
     compile dependencies.ormliteCore
     compile dependencies.ormliteAndroid

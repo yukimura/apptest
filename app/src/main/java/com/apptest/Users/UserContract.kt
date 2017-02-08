@@ -1,8 +1,8 @@
 package com.apptest.Users
 
-import com.apptest.BasePresenter
-import com.apptest.BaseView
-import com.apptest.models.User
+import com.apptest.core.interfaces.BasePresenter
+import com.apptest.core.interfaces.BaseView
+import com.apptest.Users.models.User
 import java.util.*
 
 /**
