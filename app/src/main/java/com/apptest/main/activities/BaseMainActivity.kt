@@ -1,4 +1,4 @@
-package com.apptest.main
+package com.apptest.main.activities
 
 import android.support.annotation.Nullable
 import android.support.v7.app.AppCompatActivity

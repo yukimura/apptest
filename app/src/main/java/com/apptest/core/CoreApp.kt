@@ -1,7 +1,6 @@
 package com.apptest.core
 
 import android.app.Application
-import android.content.Context
 import butterknife.ButterKnife
 
 /**

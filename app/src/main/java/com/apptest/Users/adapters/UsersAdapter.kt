@@ -22,13 +22,6 @@ class UsersAdapter : RecyclerView.Adapter<UserViewHolder> {
 
     constructor(context: Context, listener: OnItemClickListener) {
         this.context = context
-        this.users = ArrayList<User>()
-        this.mListener = listener
-    }
-
-    constructor(context: Context, users: ArrayList<User>, listener: OnItemClickListener) {
-        this.context = context
-        this.users = users
         this.mListener = listener
     }
 

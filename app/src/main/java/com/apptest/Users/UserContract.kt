@@ -1,7 +1,7 @@
 package com.apptest.Users
 
-import com.apptest.core.interfaces.BasePresenter
-import com.apptest.core.interfaces.BaseView
+import com.apptest.main.interfaces.BasePresenter
+import com.apptest.main.interfaces.BaseView
 import com.apptest.Users.models.User
 import java.util.*
 

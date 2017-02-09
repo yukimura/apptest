@@ -1,4 +1,4 @@
-package com.apptest.Users.services;
+package com.apptest.Users.dependencies;
 
 import com.apptest.Users.models.User;
 

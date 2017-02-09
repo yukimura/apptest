@@ -1,14 +1,17 @@
 package com.apptest.Users
 
+import android.content.Context
 import android.util.Log
 import com.apptest.core.CoreApp
 import com.apptest.R
+import com.apptest.Users.annotations.AUser
 import com.apptest.Users.annotations.AUser.Companion.GALLERYOFPICTURE
 import com.apptest.Users.annotations.AUser.Companion.USERS
 import com.apptest.Users.annotations.AUser.Companion.USERSALBUMS
+import com.apptest.Users.dependencies.DaggerUserComponent
 import com.apptest.retrofit.interfaces.RetrofitResponse
 import com.apptest.Users.models.User
-import com.apptest.retrofit.singletons.ServiceManager
+import com.apptest.Users.dependencies.UserModule
 import retrofit2.Response
 import java.util.*
 
@@ -29,13 +32,18 @@ class UserPresenter(usersView: UserContract.View) : UserContract.Presenter, Retr
         mUsersView.setPresenter(this)
     }
 
-    override fun start(service: Int) {
-        load(service)
+    override fun start() {
+        load(AUser.USERS)
     }
 
     override fun load(service: Int) {
         mUsersView.showProgressIndicator()
-        ServiceManager.getInstance(CoreApp.APPLICATION).userController.users(this, service)
+
+        DaggerUserComponent.builder()
+                .userModule(UserModule(CoreApp.APPLICATION, this, service))
+                .build().observable()
+
+        //ServiceManager.getInstance(CoreApp.APPLICATION).userController.users(this, service)
     }
 
     override fun onComplete(message: String) {

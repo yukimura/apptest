@@ -1,7 +1,6 @@
 package com.apptest.adapter
 
 import android.content.Context
-import com.apptest.retrofit.controllers.BaseController
 import com.apptest.database.DatabaseHelper
 
 
@@ -9,6 +8,6 @@ import com.apptest.database.DatabaseHelper
  * Created by davidpayel on 06/10/2016.
  */
 
-open class BaseHelperController protected constructor(context: Context) : BaseController(context) {
+open class BaseHelperController protected constructor(context: Context) {
     var helper: DatabaseHelper = DatabaseHelper(context)
 }

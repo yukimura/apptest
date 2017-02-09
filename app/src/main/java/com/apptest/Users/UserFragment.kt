@@ -60,7 +60,7 @@ class UserFragment : BaseUserFragment(), UserContract.View {
 
     override fun onResume() {
         super.onResume()
-        mPresenter?.start(USERS)
+        mPresenter?.start()
     }
 
     override fun setPresenter(presenter: UserContract.Presenter) {

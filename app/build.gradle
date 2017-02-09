@@ -1,5 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
@@ -38,21 +40,29 @@ dependencies {
 
     compile dependencies.kotlin
 
+    compile dependencies.rxKotlin
+    compile dependencies.rxAndroid
+
     compile dependencies.retrofit
     compile dependencies.retrofitConverterGson
     compile dependencies.retrofitAdapterRxJava
-    compile dependencies.rxAndroid
     compile dependencies.okHttp
 
+    compile dependencies.picasso
     compile dependencies.butterknife
     kapt dependencies.butterknifeCompiler
 
     compile dependencies.ormliteCore
     compile dependencies.ormliteAndroid
 
+    compile dependencies.dagger
+    kapt dependencies.daggerCompiler
+    provided dependencies.jsr250Api
+
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    testCompile 'org.testng:testng:6.9.6'
 }
 
 repositories {

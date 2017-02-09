@@ -1,5 +1,6 @@
-package com.apptest.core.interfaces
+package com.apptest.main.interfaces
 
+import android.content.Context
 import com.apptest.Users.models.User
 import java.util.*
 
@@ -8,5 +9,5 @@ import java.util.*
  */
 
 interface BasePresenter {
-    fun start(service: Int)
+    fun start()
 }

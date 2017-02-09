@@ -27,8 +27,8 @@ open class BaseUserFragment : Fragment() {
 
     protected fun initRecyclerView() {
         val adapter = UsersAdapter(activity, object : UsersAdapter.OnItemClickListener {
-            override fun onItemClick(user: User, view: View) {
-                Snackbar.make(view, user.name.toString(), Snackbar.LENGTH_LONG).show()
+            override fun onItemClick(user: User, v: View) {
+                Snackbar.make(v, user.name.toString(), Snackbar.LENGTH_LONG).show()
             }
         })
         recyclerview?.adapter = adapter
