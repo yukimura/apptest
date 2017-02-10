@@ -42,8 +42,6 @@ class UserPresenter(usersView: UserContract.View) : UserContract.Presenter, Retr
         DaggerUserComponent.builder()
                 .userModule(UserModule(CoreApp.APPLICATION, this, service))
                 .build().observable()
-
-        //ServiceManager.getInstance(CoreApp.APPLICATION).userController.users(this, service)
     }
 
     override fun onComplete(message: String) {
